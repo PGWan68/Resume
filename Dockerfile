@@ -8,8 +8,8 @@ WORKDIR /app
 # 复制package.json和package-lock.json
 COPY package*.json ./
 
-# 安装依赖
-RUN npm install --omit=dev
+# 安装全部依赖
+RUN npm install 
 
 # 调试：检查 Vite 是否安装
 RUN echo "Vite version:" && npx vite --version
