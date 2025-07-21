@@ -1,3 +1,5 @@
+// src/components/HeaderInfo.jsx
+
 import React from 'react';
 
 const HeaderInfo = ({ headerInfo }) => {

@@ -1,6 +1,8 @@
+// src/App.jsx
 import React from 'react';
 import HeaderInfo from './components/HeaderInfo';
 import ResumeContent from './components/ResumeContent';
+import Footer from './components/Footer';
 import yaml from 'js-yaml';
 import { useEffect, useState } from 'react';
 import './style.css';
@@ -30,9 +32,14 @@ const App = () => {
   return (
     <main className="container">
       <div className="paper">
-        {config.showHeader && <HeaderInfo headerInfo={config.headerInfo} />}
-        <ResumeContent resumePath={config.resumePath} />
+        <div className="pin pin-left"></div>
+        <div className="pin pin-right"></div>
+        <div className="paper-content">
+          {config.showHeader && <HeaderInfo headerInfo={config.headerInfo} />}
+          <ResumeContent resumePath={config.resumePath} />
+        </div>
       </div>
+      <Footer />
     </main>
   );
 };
