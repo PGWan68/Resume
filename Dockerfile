@@ -11,11 +11,7 @@ COPY package*.json ./
 # 安装全部依赖
 RUN npm install 
 
-# 调试：检查 Vite 是否安装
-RUN echo "Vite version:" && npx vite --version
-
 # 复制项目文件
-
 COPY . .
 
 # 构建应用
