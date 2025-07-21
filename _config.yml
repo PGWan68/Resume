@@ -1,0 +1,9 @@
+title: 'markCV - Beautiful online resume'
+publicPath: '/'
+resumePath: './markdown/resume-template.md'
+showHeader: true
+headerInfo:
+  photo: './src/assets/avatar.jpeg'
+  name: 'bigLiao'
+  phone: '151****1111'
+  email: 'bigliao@markcv.com'
