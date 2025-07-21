@@ -33,6 +33,13 @@ jobs:
       - name: Extract version from tag
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
+        # 添加调试步骤：查看环境信息
+      - name: Debug environment
+        run: |
+          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} node --version
+          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} npm --version
+          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} sh -c 'echo $PATH'
+
       # 构建并推送到 Docker Hub（使用统一的镜像名称变量）
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
