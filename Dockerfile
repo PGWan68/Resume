@@ -9,7 +9,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # 安装全部依赖
-RUN npm install --omit=dev && npm cache clean --force 
+RUN npm install
 
 # 复制项目文件
 COPY . .
