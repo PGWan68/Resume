@@ -2,7 +2,7 @@ name: Build and Publish Docker Image
 
 # 定义镜像名称（统一管理）
 env:
-  IMAGE_NAME: "PGWan/resume"  # 此处定义镜像名称，后续统一使用该变量
+  IMAGE_NAME: "pgwan/resume"  # 此处定义镜像名称，后续统一使用该变量
 
 on:
   # 仅在创建新 Tag 时触发
@@ -31,7 +31,7 @@ jobs:
 
       # 获取 Tag 作为版本号（如 v1.0.0）
       - name: Extract version from tag
-        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
       # 构建并推送到 Docker Hub（使用统一的镜像名称变量）
       - name: Build and push Docker image
