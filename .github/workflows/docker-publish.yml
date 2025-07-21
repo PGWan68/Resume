@@ -33,13 +33,6 @@ jobs:
       - name: Extract version from tag
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
-        # 添加调试步骤：查看环境信息
-      - name: Debug environment
-        run: |
-          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} node --version
-          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} npm --version
-          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} sh -c 'echo $PATH'
-
       # 构建并推送到 Docker Hub（使用统一的镜像名称变量）
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -54,3 +47,11 @@ jobs:
             org.opencontainers.image.source=${{ github.repositoryUrl }}
             org.opencontainers.image.version=${{ env.VERSION }}
             org.opencontainers.image.revision=${{ github.sha }}
+
+      
+       # 调试步骤：在镜像推送成功后执行（移到这里！）
+      - name: Verify image (after build)
+        run: |
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} node --version
+          docker run --rm ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} npm --version
