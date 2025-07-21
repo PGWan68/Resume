@@ -2,7 +2,7 @@ name: Build and Publish Docker Image
 
 # 定义镜像名称（统一管理）
 env:
-  IMAGE_NAME: "pgwan/resume"  # 此处定义镜像名称，后续统一使用该变量
+  IMAGE_NAME: "resume"  
 
 on:
   # 仅在创建新 Tag 时触发
