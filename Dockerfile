@@ -9,7 +9,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # 安装依赖
-RUN npm install --production
+RUN npm install --omit=dev
+
+# 调试：检查 Vite 是否安装
+RUN echo "Vite version:" && npx vite --version
 
 # 复制项目文件
 
