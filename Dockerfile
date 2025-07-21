@@ -1,6 +1,6 @@
 # Dockerfile
 # 使用官方Node.js LTS版本作为基础镜像
-FROM node:18-alpine as builder
+FROM node:18 as builder
 
 # 设置工作目录
 WORKDIR /app
@@ -20,7 +20,7 @@ COPY . .
 RUN npm run build
 
 # 创建轻量级生产镜像
-FROM node:18-alpine
+FROM node:18
 
 # 设置工作目录
 WORKDIR /app
