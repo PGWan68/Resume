@@ -33,7 +33,7 @@ COPY --from=builder /app/public/ ./public/
 COPY --from=builder /app/_config.yml ./
 
 # 暴露端口（根据您的应用配置）
-EXPOSE 3000
+EXPOSE 3018
 
 # 启动应用
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "preview"]
