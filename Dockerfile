@@ -36,4 +36,5 @@ COPY --from=builder /app/_config.yml ./
 EXPOSE 3018
 
 # 启动应用
-CMD ["npm", "run", "preview"]
+# 因为markdown文档需要时时更新，这里指用开发坏境，preview环境暂时不行
+CMD ["npm", "run", "dev"]

@@ -1,9 +1,9 @@
 title: 'make-cv - 漂亮的在线个人简历'
-publicPath: '/public/'
-resumePath: './markdown/resume.md'
+publicPath: '/'
+resumePath: '/markdown/resume.md'
 showHeader: true
 headerInfo:
-  photo: './src/assets/avatar.jpg'
+  photo: '/src/assets/avatar.jpg'
   name: '万合天宜'
   phone: '188****8888'
   email: 'pgwan@makecv.com'

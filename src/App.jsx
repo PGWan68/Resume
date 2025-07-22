@@ -1,4 +1,4 @@
-// src/App.jsx
+// make-cv/src/App.jsx
 import React from 'react';
 import HeaderInfo from './components/HeaderInfo';
 import ResumeContent from './components/ResumeContent';
@@ -9,23 +9,36 @@ import './style.css';
 
 const App = () => {
   const [config, setConfig] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await fetch('../_config.yml');
+        const response = await fetch('/config.yml');
+
+        const contentType = response.headers.get('content-type');
+        if (!contentType?.includes('text/yaml') && !contentType?.includes('text/plain')) {
+          throw new Error("配置文件不存在或路径错误");
+        }
+
         const text = await response.text();
         const parsedConfig = yaml.load(text);
         setConfig(parsedConfig);
+        setError(null);
       } catch (error) {
-        console.error('Error fetching config:', error);
-      }
+        setConfig(null);
+        setError(error);
+      } 
     };
 
     fetchConfig();
   }, []);
 
-  if (!config) {
+  if (error) {
+    return <div className="error-message" >{error.message}</div>;
+  }
+
+ if (!config) {
     return <div>Loading...</div>;
   }
 
