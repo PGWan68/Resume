@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
        
        <div className="powered-by">
-          Powered by <a href="https://github.com/markcv/markcv" target="_blank" rel="noopener noreferrer">markCV</a>
+          Powered by <a href="https://github.com/PGWan68/make-cv" target="_blank" rel="noopener noreferrer">make-cv</a>
         </div>
       
     </footer>

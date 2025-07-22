@@ -2,7 +2,8 @@ name: Build and Publish Docker Image
 
 # 定义镜像名称（统一管理）
 env:
-  IMAGE_NAME: "resume"  
+  IMAGE_NAME: "make-cv" 
+  DOCKERHUB_REPO: "make-cv"
 
 on:
   # 仅在创建新 Tag 时触发
@@ -54,5 +55,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ secrets.DOCKERHUB_USERNAME }}/resume  # 替换为你的仓库名
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPO }}  # 替换为你的仓库名
           readme-filepath: ./README.md  # README 文件路径

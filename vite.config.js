@@ -9,7 +9,7 @@ export default defineConfig({
     host: '0.0.0.0',    // 允许外部访问（Docker 容器内必须设置）
   },
   preview: {
-    port: 3018,         // 预览服务器端口（npm run preview）
+    port: 3018,         // 预览服务器端口（npm run preview，需要先执行 npm run build才有内容）
     host: '0.0.0.0',    // 允许外部访问
   }
 })
