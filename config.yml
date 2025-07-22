@@ -1,6 +1,5 @@
 title: 'make-cv - 漂亮的在线个人简历'
-publicPath: '/'
-resumePath: '/resume.md'
+resumePath: '/markdown/resume.md'
 showHeader: true
 headerInfo:
   photo: '/src/assets/avatar.jpg'
