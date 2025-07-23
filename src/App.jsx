@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const response = await fetch('/config.yml');
+        const response = await fetch('/config/config.yml');
 
         const contentType = response.headers.get('content-type');
         if (!contentType?.includes('text/yaml') && !contentType?.includes('text/plain')) {
