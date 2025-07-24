@@ -23,6 +23,7 @@ const App = () => {
 
         const text = await response.text();
         const parsedConfig = yaml.load(text);
+        console.log("config.yml配置文件解析成功：", parsedConfig);
         setConfig(parsedConfig);
         setError(null);
       } catch (error) {
@@ -35,6 +36,7 @@ const App = () => {
   }, []);
 
   if (error) {
+    console.log("config.yml配置文件加载失败：", error.message);
     return <div className="error-message" >{error.message}</div>;
   }
 

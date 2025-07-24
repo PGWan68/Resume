@@ -20,6 +20,9 @@ const ResumeContent = ({ resumePath }) => {
         }
   
         const text = await response.text();
+
+        console.log("markdown文档加载成功...");
+
         setResumeHtml(md.render(text));
       } catch (error) {
         setError(error); 
@@ -30,6 +33,7 @@ const ResumeContent = ({ resumePath }) => {
   }, [resumePath]);
 
   if (error) {
+    console.log("markdown文档加载异常: ", error.message);
     return <div className="error-message" >{error.message}</div>;
   }
 
