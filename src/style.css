@@ -151,8 +151,7 @@ body {
   /* 参考原项目的样式 */
   max-width: 1000px;
   margin: 0 auto;
-  padding-bottom: 12px;
-  padding-top: 12px;
+  padding: 4px;
 }
 
 #markdown-body h1,

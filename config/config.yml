@@ -1,3 +1,6 @@
+
+# 如果搭建一个后台来管理，还需要做账号校验等操作，增加了项目的功能复杂度
+# 为了轻便，只支持手动修改配置文件
 title: 'make-cv - 漂亮的在线个人简历'
 resumePath: '/config/resume.md'
 showHeader: true
