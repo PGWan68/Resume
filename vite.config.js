@@ -8,7 +8,11 @@ export default defineConfig({
   server: {
     port: 3018,
     host: '0.0.0.0',
-    allowedHosts: 'all',
+    allowedHosts: [
+      'resume.x.ddnsto.com',
+      'localhost', 
+      'all'
+    ],
     open: true,   // 开启日志
     onListening(server) {
       const { port, host } = server.config;

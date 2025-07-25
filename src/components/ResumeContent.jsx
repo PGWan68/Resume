@@ -16,7 +16,7 @@ const ResumeContent = ({ resumePath }) => {
         const contentType = response.headers.get('content-type');
 
         if (!contentType?.includes('text/markdown') && !contentType?.includes('text/plain')) {
-         throw new Error("Markdown文件不存在或路径错误");
+         throw new Error("Markdown文件不存在或路径配置错误");
         }
   
         const text = await response.text();
