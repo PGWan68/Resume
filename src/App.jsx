@@ -7,6 +7,10 @@ import yaml from 'js-yaml';
 import { useEffect, useState } from 'react';
 import './style.css';
 
+
+const configPath = '/config/config.yml';
+const resumePath = '/config/resume.md';
+
 const App = () => {
   const [config, setConfig] = useState(null);
   const [error, setError] = useState(null);
@@ -15,7 +19,7 @@ const App = () => {
 
     const fetchConfig = async () => {
       try {
-        const response = await fetch('/config/config.yml');
+        const response = await fetch(configPath);
 
         const contentType = response.headers.get('content-type');
         if (!contentType?.includes('text/yaml') && !contentType?.includes('text/plain')) {
@@ -52,7 +56,7 @@ const App = () => {
         <div className="pin pin-right"></div>
         <div className="paper-content">
           {config.showHeader && <HeaderInfo headerInfo={config.headerInfo} />}
-          <ResumeContent resumePath={config.resumePath} />
+          <ResumeContent resumePath={resumePath} />
         </div>
       </div>
       <Footer showPrintStick={config.showPrintStick} />

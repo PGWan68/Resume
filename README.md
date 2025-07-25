@@ -7,7 +7,7 @@
 1. **Markdown 支持**：使用 Markdown 文件编写简历内容，易于维护和格式调整。
 2. **可定制性**：通过修改 `config.yml` 文件，能自定义简历的标题、头部信息、是否显示头部等。
 3. **美观的界面**：采用简洁美观的设计风格，模拟纸张效果并使用大头针装饰，增强视觉吸引力。
-4. **打印功能**：提供打印提示，方便用户将简历导出为 PDF 文件。
+4. **打印提醒**：提供打印提示，方便用户将简历导出为 PDF 文件。
 
 ## 三、技术栈
 ### 前端框架
@@ -78,76 +78,75 @@ npm run preview
 可以通过修改 `config.yml` 文件来定制简历的相关信息：
 ```yaml
 title: 'make-cv - 漂亮的在线个人简历'
-publicPath: '/public/'
-resumePath: './markdown/resume.md'
 showHeader: true
+showPrintStick: true
 headerInfo:
-  photo: './src/assets/avatar.jpg'
-  name: '万合天宜'
+  photo: 'https://fileswan.x.ddnsto.com/imgs/IMG_2948.JPG'
+  name: '张三(AI生成)'
   phone: '188****8888'
-  email: 'pgwan@makecv.com'
+  email: 'zhangsan@makecv.com'
 ```
 - `title`：简历页面的标题。
-- `publicPath`：公共资源路径。
-- `resumePath`：简历 Markdown 文件的路径。
 - `showHeader`：是否显示头部信息。
+- `showPrintStick`：是否显示底部的打印标签。
 - `headerInfo`：头部信息，包括照片、姓名、电话和邮箱。
 
-## 七、自定义简历内容
-可以编辑 `markdown/resume.md` 文件来修改简历的具体内容，支持 Markdown 语法。文件中已经包含了个人信息、工作经历、开源项目和作品、技能清单等常见简历板块，示例内容如下：
-```markdown
-# 个人信息
 
-- 胶布帝/男/1990 
-- 本科/萌鹿大学计算机系 
-- 工作年限：3年
-- 微博：[@JobDeer](http://weibo.com/jobdeer) （``` 如果没有技术相关内容，也可以不放 ```）
-- 技术博客：http://blog.github.io ( ``` 使用GitHub Host的Big较高 ```  )
-- Github：http://github.com/geekcompany ( ``` 有原创repo的Github帐号会极大的提升你的个人品牌 ```  )
-- 手机：135******** （```如果是外地手机，可注明。如经常关机，要写上最优联系时间```）
-- Email：goodman@gmail.com （```虽然我觉得QQ邮箱无所谓，不过有些技术人员比较反感，建议用G```）
-- QQ/微信号：6*******（```提供一个通过网络可以联系到你的方式```）
-- 期望职位：Web前端高级程序员，应用架构师
-- 期望薪资：税前月薪15k~20k，特别喜欢的公司可例外
-- 期望城市：北京
+## 七、部署教程
 
-# 工作经历
-## ABC公司 （ 2012年9月 ~ 2014年9月 ）
-### DEF项目 
+### 静态资源部署
+静态资源部署是将项目构建后生成的静态文件部署到静态文件服务器上，从而让用户可以通过网络访问。以下以部署到 GitHub Pages 为例，详细介绍静态资源部署的步骤：
 
-我在此项目负责了哪些工作，分别在哪些地方做得出色/和别人不一样/成长快，这个项目中，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。
+#### 1. 创建新仓库
+在 GitHub 上创建一个新的仓库，用于存放部署的静态文件。你可以登录 GitHub 账号，点击右上角的“+”号，选择“New repository”，然后按照提示填写仓库名称、描述等信息，最后点击“Create repository”完成创建。
 
-# 开源项目和作品
-## 开源项目
-（对于程序员来讲，没有什么比Show me the code能有说服力了）
+#### 2. 构建项目
+在本地项目目录下，执行以下命令进行生产环境构建：
+```bash
+npm run build
+```
+构建完成后，会在 `dist` 目录下生成静态文件。
 
- - [STU](http://github.com/yourname/projectname)：项目的简要说明，Star和Fork数多的可以注明
- - [WXYZ](http://github.com/yourname/projectname)：项目的简要说明，Star和Fork数多的可以注明
+#### 3. 推送文件到 `gh-pages` 分支
+将 `dist` 目录下的文件推送到新仓库的 `gh-pages` 分支。可以按照以下步骤操作：
+```bash
+# 创建并切换到 gh-pages 分支
+git checkout -b gh-pages
 
-# 技能清单
-（我一般主张将技能清单写入到工作经历里边去。不过很难完整，所以有这么一段也不错）
+# 添加所有文件到暂存区
+git add .
 
-以下均为我熟练使用的技能
+# 提交更改
+git commit -m "Deploy to GitHub Pages"
 
-- Web开发：PHP/Hack/Node
-- Web框架：ThinkPHP/Yaf/Yii/Lavaral/LazyPHP
-- 前端框架：Bootstrap/AngularJS/EmberJS/HTML5/Cocos2dJS/ionic
-- 前端工具：Bower/Gulp/SaSS/LeSS/PhoneGap
-- 数据库相关：MySQL/PgSQL/PDO/SQLite
-- 版本管理、文档和自动化部署工具：Svn/Git/PHPDoc/Phing/Composer
-- 单元测试：PHPUnit/SimpleTest/Qunit
-- 云和开放平台：SAE/BAE/AWS/微博开放平台/微信应用开发
+# 推送更改到远程仓库的 gh-pages 分支
+git push origin gh-pages
 ```
 
-## 八、部署
-可以将 `dist` 目录下的静态文件部署到任何静态文件服务器上，例如 GitHub Pages、Netlify 等。以下是部署到 GitHub Pages 的简单步骤：
-1. 在 GitHub 上创建一个新的仓库。
-2. 将 `dist` 目录下的文件推送到该仓库的 `gh-pages` 分支。
-3. 在仓库的设置中，将 GitHub Pages 的源设置为 `gh-pages` 分支。
-4. 稍等片刻，即可通过仓库的 GitHub Pages 链接访问简历。
+#### 4. 配置 GitHub Pages
+在新仓库的设置中，找到 GitHub Pages 部分，将源设置为 `gh-pages` 分支。设置完成后，GitHub 会自动为你部署静态文件。
 
-## 九、贡献
+#### 5. 访问简历
+稍等片刻，即可通过仓库的 GitHub Pages 链接访问简历。链接格式通常为 `https://<your-github-username>.github.io/<repository-name>`。
+
+### Docker 部署
+本项目已经推送至Dockerhub，支持使用 Docker 进行部署。以下是详细的 Docker 部署步骤：
+
+#### 1. 拉取镜像
+在需要部署的服务器上，拉取并运行 Docker 镜像：
+```bash
+# 拉取镜像
+docker pull pinger68/make-cv:latest
+
+# 运行容器
+docker run -d -p 3018:3018 -v /make-cv/config:/app/config pinger68/make-cv:latest
+```
+
+#### 2. 访问简历
+运行以上命令后，你可以通过访问服务器的 IP 地址和端口号（例如 `http://<server-ip>:3018`）来查看简历。
+
+## 八、贡献
 如果你发现任何问题或有改进建议，欢迎提交 Issue 或 Pull Request。
 
-## 十、许可证
+## 九、许可证
 本项目采用 [MIT 许可证](LICENSE)。
