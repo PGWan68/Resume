@@ -55,7 +55,7 @@ const App = () => {
           <ResumeContent resumePath={config.resumePath} />
         </div>
       </div>
-      <Footer />
+      <Footer showPrintStick={config.showPrintStick} />
     </main>
   );
 };

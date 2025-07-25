@@ -4,6 +4,7 @@
 title: 'make-cv - 漂亮的在线个人简历'
 resumePath: '/config/resume.md'
 showHeader: true
+showPrintStick: true
 headerInfo:
   photo: 'https://fileswan.x.ddnsto.com/imgs/IMG_2948.JPG'
   name: '万合天宜'
