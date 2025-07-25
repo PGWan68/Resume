@@ -30,6 +30,12 @@ body {
   max-width: 1000px;
 }
 
+.paper-content {
+  padding: 1.4em; /* 参考原项目 md 尺寸的 padding */
+  background-color: #f1edeee1;
+  min-height: 50vh;
+}
+
 .footer {
   text-align: center;
   margin-top: 120px;
@@ -42,11 +48,7 @@ body {
   margin-top: 24px;
 }
 
-.paper-content {
-  padding: 1.4em; /* 参考原项目 md 尺寸的 padding */
-  background-color: #f1edeee1;
-  min-height: 50vh;
-}
+
 
 /* 大头针样式 */
 .pin {
@@ -305,47 +307,83 @@ body {
 }
 
 
-/* 媒体查询，适配不同屏幕尺寸 */
+/* 适配小屏幕设备 */
 @media (max-width: 576px) {
+  body{
+    background-color: #fff;
+  }
+
+  /* .paper {
+    background-color: white;
+    box-shadow: -5px 10px 20px rgba(0,0,0,0.3);
+    padding: 1.2em; 
+    position: relative;
+    margin-top: 48px;
+    width: 80%;
+    max-width: 1000px;
+  } */
+
+
   .paper {
-    padding: 0.6em;
+    padding: 0px; /* 进一步缩小内边距 */
+    width: 100%;
+    max-width: auto;
+    box-shadow: none;
+     margin-top: 0px;
   }
+
   .paper-content {
-    padding: 0.7em;
+    padding: 0.6em; /* 进一步缩小内边距 */
+    background-color: #fff;
   }
+
   .pin {
-    width: 20px;
-    height: 20px;
-    top: -10px;
+    display: none;
   }
-  .stick {
-    transform: scale(0.6);
+
+  .print-stick{
+    display: none;
   }
-  .container {
-    padding-top: 40px; /* 小屏幕减小间距 */
+
+  .paper{
+    margin-top: 0px;
+  }
+
+  .powered-by {
+    background-color: #fff;
+  }
+
+  .header-info .photo {
+    display: none;
+  }
+
+
+  .header-info {
+    margin: 0px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    min-height: 1em;
+  }
+
+  /* 调整 Markdown 内容样式以适应小屏幕 */
+  #markdown-body h1 {
+    font-size: 1.6em; /* 缩小标题 1 的字体大小 */
+  }
+  #markdown-body h2 {
+    font-size: 1.4em; /* 缩小标题 2 的字体大小 */
+  }
+  #markdown-body h3 {
+    font-size: 1.2em; /* 缩小标题 3 的字体大小 */
+  }
+  #markdown-body ul,
+  #markdown-body ol {
+    padding-left: 20px; /* 缩小列表的左内边距 */
+  }
+  #markdown-body table tr th,
+  #markdown-body table tr td {
+    padding: 4px 8px; /* 缩小表格单元格的内边距 */
   }
 }
-
-@media (min-width: 576px) and (max-width: 768px) {
-  .paper {
-    padding: 0.6em;
-  }
-  .paper-content {
-    padding: 0.7em;
-  }
-  .pin {
-    width: 30px;
-    height: 30px;
-    top: -16px;
-  }
-  .stick {
-    transform: scale(0.8);
-  }
-  .container {
-    padding-top: 50px; /* 小屏幕减小间距 */
-  }
-}
-
 
 /* 打印样式专用配置 */
 @media print {
@@ -389,7 +427,6 @@ body {
 
   .header-info {
     margin: 0px;
-    background-color: #c50838e1;
     padding-top: 8px;
     padding-bottom: 8px;
   }
