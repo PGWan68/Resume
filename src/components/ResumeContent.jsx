@@ -38,7 +38,7 @@ const ResumeContent = ({ resumePath }) => {
   }
 
  if (!resumeHtml) {
-    return <div>Loading...</div>;
+    return <div/>;
   }
 
   return (

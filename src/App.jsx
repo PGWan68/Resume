@@ -12,6 +12,7 @@ const App = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+
     const fetchConfig = async () => {
       try {
         const response = await fetch('/config/config.yml');
@@ -41,7 +42,7 @@ const App = () => {
   }
 
  if (!config) {
-    return <div>Loading...</div>;
+    return <div/>;
   }
 
   return (
